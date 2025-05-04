@@ -1,0 +1,46 @@
+# Ignorar dependencias y cachés
+/vendor
+/node_modules
+
+# Laravel build y cache
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/storage/framework/cache/data
+/storage/framework/sessions
+/storage/framework/testing
+/storage/framework/views
+/storage/logs
+/storage/pail
+
+# Configuración y secretos
+.env
+.env.backup
+.env.production
+.auth.json
+
+# PHPUnit
+.phpunit.cache
+.phpunit.result.cache
+
+# IDEs y herramientas locales
+/.phpactor.json
+/.fleet
+/.idea
+/.nova
+/.vscode
+/.zed
+
+# Homestead
+Homestead.json
+Homestead.yaml
+
+# Logs y errores
+npm-debug.log
+yarn-error.log
+
+# Ignorar otros .env.* excepto .env.example
+.env.*
+!.env.example
+

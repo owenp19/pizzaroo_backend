@@ -1,0 +1,931 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Pizzaroo API",
+        "description": "Documentación Swagger para Pizzaroo",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/admins": {
+            "get": {
+                "tags": [
+                    "Admins"
+                ],
+                "summary": "Obtener todos los administradores",
+                "operationId": "27f6447f654b54ee491274c73668fa10",
+                "responses": {
+                    "200": {
+                        "description": "Lista de administradores"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Admins"
+                ],
+                "summary": "Crear un nuevo administrador",
+                "operationId": "e97775d486a8f350753ea15cdf329efb",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Administrador creado"
+                    }
+                }
+            }
+        },
+        "/api/admins/{id}": {
+            "put": {
+                "tags": [
+                    "Admins"
+                ],
+                "summary": "Actualizar un administrador",
+                "operationId": "d1fe95b300f5938f417f9d84f001d509",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Administrador actualizado"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Admins"
+                ],
+                "summary": "Eliminar un administrador",
+                "operationId": "4bd429e640a5c6ec94b1dd9c44369866",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Administrador eliminado"
+                    }
+                }
+            }
+        },
+        "/api/cart-items": {
+            "get": {
+                "tags": [
+                    "Cart Items"
+                ],
+                "summary": "Obtener todos los ítems del carrito",
+                "operationId": "4233993f8a5847bc1b5329e9d1b898a4",
+                "responses": {
+                    "200": {
+                        "description": "Lista de ítems"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Cart Items"
+                ],
+                "summary": "Agregar ítem al carrito",
+                "operationId": "0a5df60f7d91780d6e0863dc698a47e0",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "user_id",
+                                    "pizza_id",
+                                    "quantity"
+                                ],
+                                "properties": {
+                                    "user_id": {
+                                        "type": "integer"
+                                    },
+                                    "pizza_id": {
+                                        "type": "integer"
+                                    },
+                                    "quantity": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ítem agregado"
+                    }
+                }
+            }
+        },
+        "/api/cart-items/{id}": {
+            "put": {
+                "tags": [
+                    "Cart Items"
+                ],
+                "summary": "Actualizar ítem del carrito",
+                "operationId": "78a5883c4ab72212dc40f79a6f5f9232",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "user_id",
+                                    "pizza_id",
+                                    "quantity"
+                                ],
+                                "properties": {
+                                    "user_id": {
+                                        "type": "integer"
+                                    },
+                                    "pizza_id": {
+                                        "type": "integer"
+                                    },
+                                    "quantity": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ítem actualizado"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Cart Items"
+                ],
+                "summary": "Eliminar ítem del carrito",
+                "operationId": "7ee59aafe2ba3f949091fb7d40d907c7",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ítem eliminado"
+                    }
+                }
+            }
+        },
+        "/api/orders": {
+            "get": {
+                "tags": [
+                    "Órdenes"
+                ],
+                "summary": "Obtener todas las órdenes",
+                "operationId": "2cd7e03021e72d9d799c12dfe179c865",
+                "responses": {
+                    "200": {
+                        "description": "Lista de órdenes"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Órdenes"
+                ],
+                "summary": "Crear una nueva orden",
+                "operationId": "d690d6834318e9b064df441e854de8b9",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "user_id",
+                                    "total",
+                                    "status"
+                                ],
+                                "properties": {
+                                    "user_id": {
+                                        "type": "integer"
+                                    },
+                                    "total": {
+                                        "type": "number"
+                                    },
+                                    "status": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Orden creada exitosamente"
+                    }
+                }
+            }
+        },
+        "/api/orders/{id}": {
+            "put": {
+                "tags": [
+                    "Órdenes"
+                ],
+                "summary": "Actualizar una orden",
+                "operationId": "6a7029f5510ca08e28a2d58a5fe19439",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "user_id": {
+                                        "type": "integer"
+                                    },
+                                    "total": {
+                                        "type": "number"
+                                    },
+                                    "status": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Orden actualizada"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Órdenes"
+                ],
+                "summary": "Eliminar una orden",
+                "operationId": "303a7b797887b66c7790c4c187b54790",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Orden eliminada"
+                    }
+                }
+            }
+        },
+        "/api/order-items": {
+            "get": {
+                "tags": [
+                    "Order Items"
+                ],
+                "summary": "Obtener todos los ítems de pedidos",
+                "operationId": "6a6b106e104d558bfc813be8f4adf2f4",
+                "responses": {
+                    "200": {
+                        "description": "Lista de ítems"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Order Items"
+                ],
+                "summary": "Crear nuevo ítem",
+                "operationId": "3390f5f422c701c6e520cc66e9d18037",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "order_id",
+                                    "pizza_id",
+                                    "quantity",
+                                    "price_unit"
+                                ],
+                                "properties": {
+                                    "order_id": {
+                                        "type": "integer"
+                                    },
+                                    "pizza_id": {
+                                        "type": "integer"
+                                    },
+                                    "quantity": {
+                                        "type": "integer"
+                                    },
+                                    "price_unit": {
+                                        "type": "number",
+                                        "format": "float"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Ítem creado exitosamente"
+                    }
+                }
+            }
+        },
+        "/api/order-items/{id}": {
+            "put": {
+                "tags": [
+                    "Order Items"
+                ],
+                "summary": "Actualizar ítem de pedido",
+                "operationId": "c1778023c9a3ecbc744efb765d68415f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "order_id": {
+                                        "type": "integer"
+                                    },
+                                    "pizza_id": {
+                                        "type": "integer"
+                                    },
+                                    "quantity": {
+                                        "type": "integer"
+                                    },
+                                    "price_unit": {
+                                        "type": "number",
+                                        "format": "float"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ítem actualizado exitosamente"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Order Items"
+                ],
+                "summary": "Eliminar ítem de pedido",
+                "operationId": "87d21d8e8c19f5d96b514a9aa273dede",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ítem eliminado"
+                    }
+                }
+            }
+        },
+        "/api/pizzas": {
+            "get": {
+                "tags": [
+                    "Pizzas"
+                ],
+                "summary": "Listar todas las pizzas",
+                "operationId": "e521daabe6a50753134f9e413db64fb1",
+                "responses": {
+                    "200": {
+                        "description": "Lista de pizzas"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Pizzas"
+                ],
+                "summary": "Crear una nueva pizza",
+                "operationId": "c522059a3e69112cf1bb1752dbdfb9e5",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "description",
+                                    "price",
+                                    "image_url"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "price": {
+                                        "type": "number",
+                                        "format": "float"
+                                    },
+                                    "image_url": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Pizza creada exitosamente"
+                    }
+                }
+            }
+        },
+        "/api/pizzas/{id}": {
+            "put": {
+                "tags": [
+                    "Pizzas"
+                ],
+                "summary": "Actualizar una pizza existente",
+                "operationId": "04d81069150f15278f6d3ac8d272cd5e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "price": {
+                                        "type": "number",
+                                        "format": "float"
+                                    },
+                                    "image_url": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Pizza actualizada correctamente"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Pizzas"
+                ],
+                "summary": "Eliminar una pizza",
+                "operationId": "dc2258eec4c05ff8699f0e90b5fcb881",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Pizza eliminada correctamente"
+                    }
+                }
+            }
+        },
+        "/api/reservas": {
+            "get": {
+                "tags": [
+                    "Reservas"
+                ],
+                "summary": "Obtener todas las reservas",
+                "operationId": "1dac4ac3e4d56272a5a9ecc4b5814d12",
+                "responses": {
+                    "200": {
+                        "description": "Lista de reservas"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Reservas"
+                ],
+                "summary": "Crear una nueva reserva",
+                "operationId": "c1a9847295f05a3f35626e8659d5831a",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "email",
+                                    "number_of_people",
+                                    "reservation_date",
+                                    "reservation_time"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "phone": {
+                                        "type": "string"
+                                    },
+                                    "number_of_people": {
+                                        "type": "integer"
+                                    },
+                                    "reservation_date": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "reservation_time": {
+                                        "type": "string",
+                                        "format": "time"
+                                    },
+                                    "message": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Reserva creada exitosamente"
+                    }
+                }
+            }
+        },
+        "/api/reservas/{id}": {
+            "put": {
+                "tags": [
+                    "Reservas"
+                ],
+                "summary": "Actualizar una reserva",
+                "operationId": "ab2d28d8be8540cd54df09da293b102b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "phone": {
+                                        "type": "string"
+                                    },
+                                    "number_of_people": {
+                                        "type": "integer"
+                                    },
+                                    "reservation_date": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "reservation_time": {
+                                        "type": "string",
+                                        "format": "time"
+                                    },
+                                    "message": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Reserva actualizada correctamente"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Reservas"
+                ],
+                "summary": "Eliminar una reserva",
+                "operationId": "e513cfab3e505a8632533205bc342fdb",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Reserva eliminada correctamente"
+                    }
+                }
+            }
+        },
+        "/api/users": {
+            "get": {
+                "tags": [
+                    "Usuarios"
+                ],
+                "summary": "Listar todos los usuarios",
+                "operationId": "c457726701591d1183b53aa71fc13441",
+                "responses": {
+                    "200": {
+                        "description": "Lista de usuarios"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Usuarios"
+                ],
+                "summary": "Crear un nuevo usuario",
+                "operationId": "592819a0265360b2014512d6dbfaf0e7",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    },
+                                    "phone": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Usuario creado exitosamente"
+                    }
+                }
+            }
+        },
+        "/api/users/{id}": {
+            "put": {
+                "tags": [
+                    "Usuarios"
+                ],
+                "summary": "Actualizar un usuario",
+                "operationId": "b9091397c8b25f12c6adb74be6ce3a5a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    },
+                                    "phone": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Usuario actualizado"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Usuarios"
+                ],
+                "summary": "Eliminar un usuario",
+                "operationId": "fa56cffde745d3f152f95cbacd936c0b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Usuario eliminado"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Admins",
+            "description": "Endpoints para gestionar administradores"
+        },
+        {
+            "name": "Cart Items",
+            "description": "Operaciones sobre los ítems del carrito"
+        },
+        {
+            "name": "Órdenes",
+            "description": "Operaciones relacionadas con órdenes de pedido"
+        },
+        {
+            "name": "Order Items",
+            "description": "Endpoints para gestionar ítems de pedidos"
+        },
+        {
+            "name": "Pizzas",
+            "description": "Gestión de pizzas"
+        },
+        {
+            "name": "Reservas",
+            "description": "Endpoints para gestionar reservas"
+        },
+        {
+            "name": "Usuarios",
+            "description": "Gestión de usuarios"
+        }
+    ]
+}
