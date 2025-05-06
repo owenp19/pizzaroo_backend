@@ -124,6 +124,151 @@
                 }
             }
         },
+        "/api/register": {
+            "post": {
+                "tags": [
+                    "Autenticación"
+                ],
+                "summary": "Registrar nuevo usuario",
+                "operationId": "8a56853624e025573120a09a4c75d468",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password"
+                                    },
+                                    "phone": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Usuario registrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "user": {
+                                            "type": "object"
+                                        },
+                                        "token": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "Autenticación"
+                ],
+                "summary": "Iniciar sesión",
+                "operationId": "a3b306d14572d1f4bd6c064b3233e7b8",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Inicio de sesión exitoso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "user": {
+                                            "type": "object"
+                                        },
+                                        "token": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Credenciales incorrectas"
+                    }
+                }
+            }
+        },
+        "/api/logout": {
+            "post": {
+                "tags": [
+                    "Autenticación"
+                ],
+                "summary": "Cerrar sesión",
+                "operationId": "fe8f3429cd6979b3b4517e186505f9f9",
+                "responses": {
+                    "200": {
+                        "description": "Sesión cerrada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
         "/api/cart-items": {
             "get": {
                 "tags": [
@@ -778,7 +923,7 @@
                     "Usuarios"
                 ],
                 "summary": "Listar todos los usuarios",
-                "operationId": "c457726701591d1183b53aa71fc13441",
+                "operationId": "eaedf6aa84fde38a08bf5d87308169f7",
                 "responses": {
                     "200": {
                         "description": "Lista de usuarios"
@@ -790,7 +935,7 @@
                     "Usuarios"
                 ],
                 "summary": "Crear un nuevo usuario",
-                "operationId": "592819a0265360b2014512d6dbfaf0e7",
+                "operationId": "e2308aae8643f8f4d79821a6399114f3",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -833,7 +978,7 @@
                     "Usuarios"
                 ],
                 "summary": "Actualizar un usuario",
-                "operationId": "b9091397c8b25f12c6adb74be6ce3a5a",
+                "operationId": "15f5757522724ebca9bac30479321b45",
                 "parameters": [
                     {
                         "name": "id",
@@ -879,7 +1024,7 @@
                     "Usuarios"
                 ],
                 "summary": "Eliminar un usuario",
-                "operationId": "fa56cffde745d3f152f95cbacd936c0b",
+                "operationId": "98b6e09e3d231384330198299feb017f",
                 "parameters": [
                     {
                         "name": "id",
@@ -902,6 +1047,10 @@
         {
             "name": "Admins",
             "description": "Endpoints para gestionar administradores"
+        },
+        {
+            "name": "Autenticación",
+            "description": "Registro y login de usuarios"
         },
         {
             "name": "Cart Items",

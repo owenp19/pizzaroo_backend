@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Users;
 use Illuminate\Http\Request;
 
 /**
@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
  *     description="Gestión de usuarios"
  * )
  */
-class UserController extends Controller
+class UsersController extends Controller
 {
     /**
      * @OA\Get(
@@ -23,7 +23,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::all();
+        return Users::all();
     }
 
     /**
@@ -48,12 +48,14 @@ class UserController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string',
-            'email' => 'required|email',
-            'password' => 'required|string',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:6',
             'phone' => 'nullable|string',
         ]);
 
-        $user = User::create($validated);
+        $validated['password'] = bcrypt($validated['password']);
+
+        $user = Users::create($validated);
 
         return response()->json(['message' => 'Usuario creado', 'data' => $user], 201);
     }
@@ -78,8 +80,17 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::findOrFail($id);
-        $user->update($request->all());
+        $user = Users::findOrFail($id);
+
+        $data = $request->all();
+
+        if (!empty($data['password'])) {
+            $data['password'] = bcrypt($data['password']);
+        } else {
+            unset($data['password']);
+        }
+
+        $user->update($data);
 
         return response()->json(['message' => 'Usuario actualizado', 'data' => $user]);
     }
@@ -95,7 +106,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
+        $user = Users::findOrFail($id);
         $user->delete();
 
         return response()->json(['message' => 'Usuario eliminado']);
